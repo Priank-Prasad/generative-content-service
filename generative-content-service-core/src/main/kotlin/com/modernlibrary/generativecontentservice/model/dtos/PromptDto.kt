@@ -1,0 +1,11 @@
+package com.modernlibrary.generativecontentservice.model.dtos
+
+data class PromptDto(
+    val templateReferenceId: String,
+    val systemRole: String,
+    val promptObjective: String,
+    val model: String,
+    val inferredExtraInformation: String,
+    val outputStyle: String,
+    var finalPrompt: String? = null,
+)
