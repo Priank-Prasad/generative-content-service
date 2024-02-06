@@ -19,7 +19,6 @@
         <spring.maven.plugin.version>2.6.0</spring.maven.plugin.version>
         <kotlinx-coroutines-reactor.version>1.5.2</kotlinx-coroutines-reactor.version>
         <jackson-module-kotlin.version>2.9.8</jackson-module-kotlin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <content-orchestrator-service-client.version>1.0.0-SNAPSHOT</content-orchestrator-service-client.version>
     </properties>
 
@@ -31,17 +30,17 @@
             <version>${content-orchestrator-service-client.version}</version>
         </dependency>
 
-        <!-- Spring Boot Starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; Spring Boot Starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Spring Boot Web Starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; Spring Boot Web Starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Spring Boot DevTools (optional) -->
         <dependency>
@@ -112,6 +111,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-reactor</artifactId>
+            <version>${kotlinx-coroutines-reactor.version}</version>
         </dependency>
 
         <dependency>
@@ -122,6 +122,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson-module-kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-spring</artifactId>
+            <version>4.41.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-provider-r2dbc</artifactId>
+            <version>4.41.0</version>
         </dependency>
     </dependencies>
 

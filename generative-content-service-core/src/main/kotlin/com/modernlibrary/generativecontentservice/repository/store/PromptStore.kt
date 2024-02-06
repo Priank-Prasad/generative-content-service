@@ -25,7 +25,7 @@ class PromptStore(
             promptObjective = prompt.promptObjective,
             model = prompt.model,
             outputStyle = prompt.outputStyle,
-            inferredExtraInformation = prompt.inferredExtraInformation,
+            userDerivedInformation = prompt.userDerivedInformation,
         )
     }
 }
