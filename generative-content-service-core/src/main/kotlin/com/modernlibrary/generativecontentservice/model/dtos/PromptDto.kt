@@ -5,7 +5,7 @@ data class PromptDto(
     val systemRole: String,
     val promptObjective: String,
     val model: String,
-    val inferredExtraInformation: String,
+    val userDerivedInformation: String,
     val outputStyle: String,
     var finalPrompt: String? = null,
 )

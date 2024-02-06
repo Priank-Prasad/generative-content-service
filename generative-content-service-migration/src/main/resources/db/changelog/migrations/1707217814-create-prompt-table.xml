@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="priank.prasad" id="1707217814">
+        <createTable tableName="prompt">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="template_reference_id" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="model" type="VARCHAR"/>
+            <column name="system_role" type="VARCHAR"/>
+            <column name="prompt_objective" type="VARCHAR"/>
+            <column name="user_derived_information" type="VARCHAR"/>
+            <column name="output_style" type="VARCHAR"/>
+            <column name="description" type="VARCHAR"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

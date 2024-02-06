@@ -39,7 +39,7 @@ class ChatGptContentGeneratorServiceImpl(
     private fun mergePromptComponents(promptDto: PromptDto, request: GenerateContentRequestDto) {
         val promptInferredParams = removeUnusedPromptsPatterns(
             fillBlanksInPrompts(
-                promptDto.inferredExtraInformation,
+                promptDto.userDerivedInformation,
                 createPromptPropertyMapping(request)
             )
         )
