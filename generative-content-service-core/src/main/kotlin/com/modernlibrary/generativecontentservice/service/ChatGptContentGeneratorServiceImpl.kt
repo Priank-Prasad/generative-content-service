@@ -14,9 +14,9 @@ class ChatGptContentGeneratorServiceImpl(
     private val chatGptClient: ChatGptClient,
 ): ContentGeneratorService {
 
-    override suspend fun generateMultipleContents(requestDtos: List<GenerateContentRequestDto>): List<GeneratedContentResponseDto> {
+    override suspend fun generateMultipleContents(requestDtoList: List<GenerateContentRequestDto>): List<GeneratedContentResponseDto> {
         val response = mutableListOf<GeneratedContentResponseDto>()
-        requestDtos.forEach { request ->
+        requestDtoList.forEach { request ->
             val promptDto = fetchPrompts(request)
             val generatedContent = chatGptClient.generateContent(promptDto)
             response.add(

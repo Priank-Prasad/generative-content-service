@@ -12,13 +12,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-  webflux:
-    base-path: /generative-content-service
   codec:
     max-in-memory-size: ${SPRING_CODE_MAX_IN_MEMORY_SIZE:10MB}
 
 server:
   port: 8085
+  servlet:
+    context-path: /generative-content-service
 
 management:
   server:
@@ -60,3 +60,4 @@ chat-gpt:
   default:
     token: ${CHAT_GPT_TOKEN:testToken}
     baseUrl: http://localhost:8097/
+    enableMockResponse: true

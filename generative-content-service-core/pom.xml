@@ -20,6 +20,7 @@
         <kotlinx-coroutines-reactor.version>1.5.2</kotlinx-coroutines-reactor.version>
         <jackson-module-kotlin.version>2.9.8</jackson-module-kotlin.version>
         <content-orchestrator-service-client.version>1.0.0-SNAPSHOT</content-orchestrator-service-client.version>
+        <modern-library.common-client.version>1.0.0-SNAPSHOT</modern-library.common-client.version>
     </properties>
 
     <dependencies>
@@ -28,6 +29,12 @@
             <groupId>org.modern-library</groupId>
             <artifactId>content-orchestrator-service-client</artifactId>
             <version>${content-orchestrator-service-client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.modern-library</groupId>
+            <artifactId>modern-library-common-client</artifactId>
+            <version>${modern-library.common-client.version}</version>
         </dependency>
 
 <!--        &lt;!&ndash; Spring Boot Starter &ndash;&gt;-->

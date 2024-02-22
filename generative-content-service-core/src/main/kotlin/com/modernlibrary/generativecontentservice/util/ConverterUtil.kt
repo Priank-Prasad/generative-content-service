@@ -1,9 +1,9 @@
 package com.modernlibrary.generativecontentservice.util
 
+import com.modernlibrary.common.client.enums.ContentType
 import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GenerateComponentInternalRequest
 import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GenerateComponentInternalResponse
 import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GeneratedContentDetailResponse
-import com.modernlibrary.contentorchestratorservice.client.enums.ContentType
 import com.modernlibrary.generativecontentservice.model.dtos.CreateContentRequestDto
 import com.modernlibrary.generativecontentservice.model.dtos.GeneratedContentResponseDto
 import com.modernlibrary.generativecontentservice.model.enums.ComponentType

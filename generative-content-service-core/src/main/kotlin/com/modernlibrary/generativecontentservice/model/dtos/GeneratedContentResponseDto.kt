@@ -1,6 +1,7 @@
 package com.modernlibrary.generativecontentservice.model.dtos
 
-import com.modernlibrary.contentorchestratorservice.client.model.ContentTone
+import com.modernlibrary.common.client.model.ContentTone
+
 
 data class GeneratedContentResponseDto(
     val content: String,

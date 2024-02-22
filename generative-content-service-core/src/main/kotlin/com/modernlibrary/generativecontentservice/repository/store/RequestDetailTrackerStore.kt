@@ -17,14 +17,12 @@ class RequestDetailTrackerStore(
 
 
     suspend fun updateRdtFailed(rdtObject: RequestDetailTracker, failureReason: String): RequestDetailTracker {
-        // Should find and update
         rdtObject.rdtStatus = RdtStatus.FAILURE
         rdtObject.errorReason = failureReason
         return requestDetailTrackerRepository.save(rdtObject).awaitFirst()
     }
 
     suspend fun updateRdtProcessed(rdtObject: RequestDetailTracker): RequestDetailTracker {
-        // Should find and update
         rdtObject.rdtStatus = RdtStatus.COMPLETED
         return requestDetailTrackerRepository.save(rdtObject).awaitFirst()
     }

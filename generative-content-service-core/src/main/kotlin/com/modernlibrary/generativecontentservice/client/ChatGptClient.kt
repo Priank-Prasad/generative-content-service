@@ -23,6 +23,9 @@ class ChatGptClient(
     suspend fun generateContent(promptDto: PromptDto) : String {
         val headers = HttpHeaders()
         headers.add("Authorization", "Bearer ${chatGptConfigs.token}")
+        if (chatGptConfigs.enableMockResponse) {
+            return getMockResponse(promptDto)
+        }
         val response = baseClient.post(
             chatGptWebClientFactory.defaultWebClientForChatGpt(),
             createRequest(promptDto),
@@ -36,6 +39,10 @@ class ChatGptClient(
             // Need to check what can be done here
             ""
         }
+    }
+
+    private fun getMockResponse(promptDto: PromptDto): String {
+        return "Generated content"
     }
 
     private fun createRequest(promptDto: PromptDto): ChatGptRequest {

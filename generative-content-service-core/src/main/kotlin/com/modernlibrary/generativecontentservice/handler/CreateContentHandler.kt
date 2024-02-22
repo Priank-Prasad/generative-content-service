@@ -18,9 +18,9 @@ class CreateContentHandler (
     private val logger = KotlinLogging.logger {}
 
     suspend fun createContent(request: GenerateComponentInternalRequest): GenerateComponentInternalResponse {
-        val rdt = RequestDetailTracker(request)
+        var rdt = RequestDetailTracker(request)
+        rdt = requestDetailTrackerStore.save(rdt)
         try {
-            requestDetailTrackerStore.save(rdt)
             val response = contentServiceMiddleware.createContent(request)
             requestDetailTrackerStore.updateRdtProcessed(rdt)
             return response

@@ -1,9 +1,10 @@
 package com.modernlibrary.generativecontentservice.service
 
+import com.modernlibrary.common.client.enums.ContentType
+import com.modernlibrary.common.client.model.ContentTone
 import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GenerateComponentInternalRequest
 import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GenerateComponentInternalResponse
-import com.modernlibrary.contentorchestratorservice.client.enums.ContentType
-import com.modernlibrary.contentorchestratorservice.client.model.ContentTone
+import com.modernlibrary.contentorchestratorservice.client.contentPlatform.GenerateInternalContentRequest
 import com.modernlibrary.contentorchestratorservice.client.model.GenerateContentRequest
 import com.modernlibrary.generativecontentservice.constant.GenerativeContentServiceConstants.Companion.DEFAULT_TONE_DELTA
 import com.modernlibrary.generativecontentservice.model.dtos.GenerateContentRequestDto
@@ -20,8 +21,6 @@ class ContentServiceMiddleware(
     private val chatGptContentGeneratorServiceImpl: ChatGptContentGeneratorServiceImpl
 ) {
 
-    // Create Content object
-    // Build response
     // Request will contain only 1 request for each content type.
     suspend fun createContent(request: GenerateComponentInternalRequest): GenerateComponentInternalResponse {
         val contentDetailsDto = mutableListOf<GeneratedContentDetailsDto>()
@@ -79,7 +78,7 @@ class ContentServiceMiddleware(
 //    }
 
 
-    private fun createAvailableTones(generateContentRequest: GenerateContentRequest): List<ContentTone> {
+    private fun createAvailableTones(generateContentRequest: GenerateInternalContentRequest): List<ContentTone> {
         val allTones = mutableListOf(generateContentRequest.tone)
         generateContentRequest.userDetails.averageToneOfFollowings?.let { allTones.add(it) }
         generateContentRequest.userDetails.averageToneOfFollowers?.let { allTones.add(it) }

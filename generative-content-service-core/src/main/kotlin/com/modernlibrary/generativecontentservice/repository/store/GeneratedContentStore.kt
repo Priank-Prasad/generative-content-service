@@ -20,7 +20,7 @@ class GeneratedContentStore(
                 requestId = request.requestId,
                 componentReferenceId = request.componentReferenceId,
                 templateReferenceId = request.templateReferenceId,
-                generativeReferenceId = generateRandomNumberWithPrefix("GC"),
+                generativeReferenceId = generateRandomNumberWithPrefix("GRC"),
                 componentType = request.componentType,
                 status = ContentStatus.RECEIVED,
             )

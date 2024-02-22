@@ -7,7 +7,7 @@ class RandomNumberGeneratorUtil {
 
     companion object {
         suspend fun generateRandomNumberWithPrefix(prefix: String) : String {
-            return prefix + Instant.now().toEpochMilli() + UUID.randomUUID().toString()
+            return Instant.now().toEpochMilli().toString().takeLast(8) + prefix + UUID.randomUUID().toString().replace("-", "").takeLast(20)
         }
     }
 }

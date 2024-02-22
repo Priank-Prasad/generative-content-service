@@ -8,4 +8,5 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class ChatGptConfigs(
     val token: String,
     val baseUrl: String,
+    val enableMockResponse: Boolean,
 )

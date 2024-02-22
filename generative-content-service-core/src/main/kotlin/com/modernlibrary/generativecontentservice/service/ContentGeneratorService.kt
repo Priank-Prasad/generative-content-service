@@ -5,5 +5,5 @@ import com.modernlibrary.generativecontentservice.model.dtos.GeneratedContentRes
 
 interface ContentGeneratorService {
 
-    suspend fun generateMultipleContents(request: List<GenerateContentRequestDto>): List<GeneratedContentResponseDto>
+    suspend fun generateMultipleContents(requestDtoList: List<GenerateContentRequestDto>): List<GeneratedContentResponseDto>
 }
