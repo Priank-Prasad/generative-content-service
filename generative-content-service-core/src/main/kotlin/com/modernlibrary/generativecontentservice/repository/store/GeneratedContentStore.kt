@@ -6,7 +6,7 @@ import com.modernlibrary.generativecontentservice.model.entity.GeneratedContent
 import com.modernlibrary.generativecontentservice.model.enums.ContentStatus
 import com.modernlibrary.generativecontentservice.repository.GeneratedContentRepository
 import com.modernlibrary.generativecontentservice.util.RandomNumberGeneratorUtil.Companion.generateRandomNumberWithPrefix
-import kotlinx.coroutines.reactive.awaitFirst
+import kotlinx.coroutines.reactive.awaitLast
 import org.springframework.stereotype.Component
 
 @Component
@@ -14,28 +14,32 @@ class GeneratedContentStore(
     private val generatedContentRepository: GeneratedContentRepository,
 ) {
 
-    suspend fun createContent(request: CreateContentRequestDto): GeneratedContentDetailsDto {
-        val content = generatedContentRepository.save(
-            GeneratedContent(
-                requestId = request.requestId,
-                componentReferenceId = request.componentReferenceId,
-                templateReferenceId = request.templateReferenceId,
-                generativeReferenceId = generateRandomNumberWithPrefix("GRC"),
-                componentType = request.componentType,
-                status = ContentStatus.RECEIVED,
-            )
-        ).awaitFirst()
+    suspend fun createContent(request: List<CreateContentRequestDto>): List<GeneratedContentDetailsDto> {
+        val content = generatedContentRepository.saveAll(
+            request.map {
+                GeneratedContent(
+                    requestId = it.requestId,
+                    componentReferenceId = it.componentReferenceId,
+                    templateReferenceId = it.templateReferenceId,
+                    generativeReferenceId = generateRandomNumberWithPrefix("GRC"),
+                    componentType = it.componentType,
+                    status = ContentStatus.RECEIVED,
+                )
+            }
+        ).collectList().awaitLast()
         return convertEntityToDto(content)
     }
 
-    private fun convertEntityToDto(content: GeneratedContent): GeneratedContentDetailsDto {
-        return GeneratedContentDetailsDto(
-            requestId = content.requestId,
-            componentReferenceId = content.componentReferenceId,
-            generativeReferenceId = content.generativeReferenceId,
-            componentType = content.componentType,
-            status =  content.status,
-            templateReferenceId = content.templateReferenceId
-        )
+    private fun convertEntityToDto(contentList: List<GeneratedContent>): List<GeneratedContentDetailsDto> {
+        return contentList.map {
+            GeneratedContentDetailsDto(
+                requestId = it.requestId,
+                componentReferenceId = it.componentReferenceId,
+                generativeReferenceId = it.generativeReferenceId,
+                componentType = it.componentType,
+                status = it.status,
+                templateReferenceId = it.templateReferenceId
+            )
+        }
     }
 }

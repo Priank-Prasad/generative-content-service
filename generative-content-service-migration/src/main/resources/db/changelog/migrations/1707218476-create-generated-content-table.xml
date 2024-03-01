@@ -9,7 +9,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="request_id" type="VARCHAR(50)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="component_reference_id" type="VARCHAR(50)">
                 <constraints nullable="false" unique="true"/>

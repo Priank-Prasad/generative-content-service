@@ -9,7 +9,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="request_id" type="VARCHAR(50)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="request_type" type="VARCHAR(100)">
                 <constraints nullable="false"/>
@@ -25,5 +25,6 @@
             <column name="updated_at" type="TIMESTAMP"/>
             <column name="version" type="BIGINT"/>
         </createTable>
+        <addUniqueConstraint tableName="request_details_tracker" columnNames="request_id, request_type"/>
     </changeSet>
 </databaseChangeLog>

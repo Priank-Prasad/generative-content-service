@@ -15,14 +15,16 @@ class ConverterUtil {
 
         fun buildCreateContentRequestDto(request: GenerateComponentInternalRequest): List<CreateContentRequestDto> {
             val dtoList = mutableListOf<CreateContentRequestDto>()
-            request.generateContentRequest.componentsToGenerate?.forEach { contentRequest ->
+            request.generateContentRequest.forEach { contentRequest ->
                 dtoList.add(
                     CreateContentRequestDto(
                         requestId = request.requestId,
                         templateReferenceId = request.templateReferenceId,
-                        componentType = ComponentType.findValueFromString(contentRequest.key.name)
+                        componentType = ComponentType.findValueFromString(contentRequest.componentType.name)
                             ?: throw GenerativeContentServiceException("Unknown component type"),
-                        componentReferenceId = contentRequest.value.componentReferenceId,
+                        componentReferenceId = contentRequest.config.componentReferenceId,
+                        tone = contentRequest.tone,
+                        contentConfig = contentRequest.config,
                     )
                 )
             }
